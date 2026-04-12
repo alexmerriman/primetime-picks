@@ -2,10 +2,23 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>TV Programmes Site</title>
+    <title>
+        {% block title %}
+        TV Programmes Site
+        {% endblock %}
+    </title>
 </head>
 <body>
+    <nav>
+        <a href="/">Home</a> |
+        <a href="/programmes/">Programmes</a>
+    </nav>
+
+    <hr>
+
+    {% block main_content %}
     <h1>Welcome to my TV Programmes website</h1>
     <p>This is the homepage.</p>
+    {% endblock %}
 </body>
 </html>

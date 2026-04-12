@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}
+TV Programmes
+{% endblock %}
+
+{% block main_content %}
+<h1>My Favourite TV Programmes</h1>
+
+{% if programmes %}
+    <ul>
+        {% for programme in programmes %}
+            <li>
+                <strong>{{ programme.title }}</strong> - {{ programme.genre }} - {{ programme.release_year }}
+                <br>
+                {{ programme.description }}
+            </li>
+            <br>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No programmes have been added yet.</p>
+{% endif %}
+{% endblock %}
