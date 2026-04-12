@@ -11,7 +11,10 @@ TV Programmes
     <ul>
         {% for programme in programmes %}
             <li>
-                <strong>{{ programme.title }}</strong> - {{ programme.genre }} - {{ programme.release_year }}
+                <strong>
+                    <a href="{% url 'programme_detail' programme.id %}">{{ programme.title }}</a>
+                </strong>
+                - {{ programme.genre }} - {{ programme.release_year }}
                 <br>
                 {{ programme.description }}
             </li>

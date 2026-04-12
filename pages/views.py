@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Programme
 
 def index(request):
@@ -10,3 +10,10 @@ def programme_list(request):
         'programmes': programmes
     }
     return render(request, 'pages/programme_list.html', context)
+
+def programme_detail(request, programme_id):
+    programme = get_object_or_404(Programme, id=programme_id)
+    context = {
+        'programme': programme
+    }
+    return render(request, 'pages/programme_detail.html', context)
