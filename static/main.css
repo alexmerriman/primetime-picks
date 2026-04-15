@@ -1,0 +1,25 @@
+body {
+    background-color: #f5f5f5;
+    font-family: Arial, sans-serif;
+}
+
+.programme-image {
+    max-width: 220px;
+    height: auto;
+    display: block;
+    margin-bottom: 15px;
+}
+
+nav {
+    margin-bottom: 15px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+}
