@@ -26,6 +26,20 @@
             <p>{{ programme.description }}</p>
         </div>
 
+        <div class="description-card">
+            <h3>Reviews</h3>
+
+            {% if reviews %}
+                {% for review in reviews %}
+                    <p><strong>{{ review.reviewer_name }}</strong> rated it {{ review.rating }}/10</p>
+                    <p>{{ review.comment }}</p>
+                    <hr>
+                {% endfor %}
+            {% else %}
+                <p>No reviews yet.</p>
+            {% endif %}
+        </div>
+
         <p class="back-link">
             <a href="{% url 'programme_list' %}">← Back to programmes</a>
         </p>

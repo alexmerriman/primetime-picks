@@ -19,8 +19,10 @@ def programme_list(request):
 
 def programme_detail(request, programme_id):
     programme = get_object_or_404(Programme, id=programme_id)
+    reviews = programme.review_set.all()
     context = {
-        'programme': programme
+        'programme': programme,
+        'reviews': reviews
     }
     return render(request, 'pages/programme_detail.html', context)
 
