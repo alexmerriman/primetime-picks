@@ -8,20 +8,25 @@ TV Programmes
 <h1>My Favourite TV Programmes</h1>
 
 {% if programmes %}
-    <ul>
-        {% for programme in programmes %}
-            <li>
-                <strong>
-                    <a href="{% url 'programme_detail' programme.id %}">{{ programme.title }}</a>
-                </strong>
-                - {{ programme.genre }} - {{ programme.release_year }}
-                <br>
-                {{ programme.description }}
-            </li>
-            <br>
-        {% endfor %}
-    </ul>
+<table border="1" cellpadding="8">
+    <tr>
+        <th>Title</th>
+        <th>Genre</th>
+        <th>Release Year</th>
+        <th>Description</th>
+    </tr>
+    {% for programme in programmes %}
+    <tr>
+        <td>
+            <a href="{% url 'programme_detail' programme.id %}">{{ programme.title }}</a>
+        </td>
+        <td>{{ programme.genre }}</td>
+        <td>{{ programme.release_year }}</td>
+        <td>{{ programme.description }}</td>
+    </tr>
+    {% endfor %}
+</table>
 {% else %}
-    <p>No programmes have been added yet.</p>
+<p>No programmes have been added yet.</p>
 {% endif %}
 {% endblock %}
