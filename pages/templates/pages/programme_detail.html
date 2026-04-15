@@ -40,6 +40,16 @@
             {% endif %}
         </div>
 
+        <div class="description-card">
+            <h3>Add a Review</h3>
+
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Submit Review</button>
+            </form>
+        </div>
+
         <p class="back-link">
             <a href="{% url 'programme_list' %}">← Back to programmes</a>
         </p>

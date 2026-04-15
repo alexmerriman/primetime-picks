@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Programme
+from .forms import ReviewForm
 
 def index(request):
     featured_programmes = Programme.objects.all()[:3]
@@ -20,9 +21,21 @@ def programme_list(request):
 def programme_detail(request, programme_id):
     programme = get_object_or_404(Programme, id=programme_id)
     reviews = programme.review_set.all()
+
+    if request.method == 'POST':
+        form = ReviewForm(request.POST)
+        if form.is_valid():
+            review = form.save(commit=False)
+            review.programme = programme
+            review.save()
+            form = ReviewForm()
+    else:
+        form = ReviewForm()
+
     context = {
         'programme': programme,
-        'reviews': reviews
+        'reviews': reviews,
+        'form': form
     }
     return render(request, 'pages/programme_detail.html', context)
 
