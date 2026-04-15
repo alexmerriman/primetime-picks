@@ -8,14 +8,9 @@
         TV Programmes Site
         {% endblock %}
     </title>
-
-    <!-- Link to CSS -->
-    <link href="{% static 'main.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'main.css' %}">
 </head>
-
 <body>
-
-    <!-- Navigation -->
     <nav>
         <a href="/">Home</a> |
         <a href="/programmes/">Programmes</a>
@@ -23,11 +18,9 @@
 
     <hr>
 
-    <!-- Page content -->
     {% block main_content %}
     <h1>Welcome to my TV Programmes website</h1>
-    <p>This is the homepage.</p>
+    <p>This website is about some of my favourite character-driven and dramatic TV programmes.</p>
     {% endblock %}
-
 </body>
 </html>

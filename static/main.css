@@ -29,3 +29,20 @@ th, td {
     height: auto;
     display: block;
 }
+
+.detail-container {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+    margin-top: 20px;
+}
+
+.detail-image img {
+    width: 200px;
+    height: auto;
+    border-radius: 6px;
+}
+
+.detail-info {
+    max-width: 600px;
+}
