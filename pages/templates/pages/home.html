@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block main_content %}
+
+<h2>Welcome to PrimeTime Picks</h2>
+
+<p>This website showcases some of my favourite character-driven and dramatic TV series.</p>
+<p>Browse the programme list to explore each show in more detail.</p>
+
+<h2>Featured Programmes</h2>
+
+<div class="featured-grid">
+    {% for programme in featured_programmes %}
+        <div class="programme-card">
+            <a href="{% url 'programme_detail' programme.id %}">
+                <img src="{{ programme.image.url }}" alt="{{ programme.title }}">
+                <h3>{{ programme.title }}</h3>
+            </a>
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

@@ -2,7 +2,11 @@ from django.shortcuts import render, get_object_or_404
 from .models import Programme
 
 def index(request):
-    return render(request, 'base.html')
+    featured_programmes = Programme.objects.all()[:3]
+    context = {
+        'featured_programmes': featured_programmes
+    }
+    return render(request, 'pages/home.html', context)
 
 def programme_list(request):
     programmes = Programme.objects.all()
