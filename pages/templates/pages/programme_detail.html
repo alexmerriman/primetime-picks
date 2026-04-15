@@ -7,6 +7,10 @@
 {% block main_content %}
 <h1>{{ programme.title }}</h1>
 
+{% if programme.image %}
+    <img src="{{ programme.image.url }}" alt="{{ programme.title }}" width="300">
+{% endif %}
+
 <p><strong>Genre:</strong> {{ programme.genre }}</p>
 <p><strong>Release Year:</strong> {{ programme.release_year }}</p>
 <p><strong>Description:</strong> {{ programme.description }}</p>
