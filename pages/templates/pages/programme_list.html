@@ -7,15 +7,22 @@ TV Programmes
 {% block main_content %}
 <h1>My Favourite TV Programmes</h1>
 
+<!-- ADD NEW BUTTON -->
+<p>
+    <a href="{% url 'programme_create' %}">➕ Add New Programme</a>
+</p>
+
 {% if programmes %}
-<table border="1" cellpadding="8">
+<table>
     <tr>
         <th>Poster</th>
         <th>Title</th>
         <th>Genre</th>
         <th>Release Year</th>
         <th>Description</th>
+        <th>Actions</th> <!-- NEW COLUMN -->
     </tr>
+
     {% for programme in programmes %}
     <tr>
         <td>
@@ -23,16 +30,28 @@ TV Programmes
                 <img src="{{ programme.image.url }}" alt="{{ programme.title }}" class="table-image">
             {% endif %}
         </td>
+
         <td>
-            <a href="{% url 'programme_detail' programme.id %}">{{ programme.title }}</a>
+            <a href="{% url 'programme_detail' programme.id %}">
+                {{ programme.title }}
+            </a>
         </td>
+
         <td>{{ programme.genre }}</td>
         <td>{{ programme.release_year }}</td>
         <td>{{ programme.description }}</td>
+
+        <!-- ACTION BUTTONS -->
+        <td>
+            <a href="{% url 'programme_update' programme.id %}">Edit</a> |
+            <a href="{% url 'programme_delete' programme.id %}">Delete</a>
+        </td>
     </tr>
     {% endfor %}
 </table>
+
 {% else %}
 <p>No programmes have been added yet.</p>
 {% endif %}
+
 {% endblock %}
