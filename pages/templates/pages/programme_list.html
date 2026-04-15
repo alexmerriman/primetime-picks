@@ -10,6 +10,7 @@ TV Programmes
 {% if programmes %}
 <table border="1" cellpadding="8">
     <tr>
+        <th>Poster</th>
         <th>Title</th>
         <th>Genre</th>
         <th>Release Year</th>
@@ -17,6 +18,11 @@ TV Programmes
     </tr>
     {% for programme in programmes %}
     <tr>
+        <td>
+            {% if programme.image %}
+                <img src="{{ programme.image.url }}" alt="{{ programme.title }}" class="table-image">
+            {% endif %}
+        </td>
         <td>
             <a href="{% url 'programme_detail' programme.id %}">{{ programme.title }}</a>
         </td>
