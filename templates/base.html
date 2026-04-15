@@ -11,16 +11,32 @@
     <link rel="stylesheet" href="{% static 'main.css' %}">
 </head>
 <body>
-    <nav>
-        <a href="/">Home</a> |
-        <a href="/programmes/">Programmes</a>
-    </nav>
 
-    <hr>
+    <div class="wrapper">
 
-    {% block main_content %}
-    <h1>Welcome to my TV Programmes website</h1>
-    <p>This website is about some of my favourite character-driven and dramatic TV programmes.</p>
-    {% endblock %}
+        <header class="site-header">
+            <h1>PrimeTime Picks</h1>
+            <p>A curated collection of standout TV dramas and series</p>
+        </header>
+
+        <nav class="site-nav">
+            <a href="/">Home</a>
+            <a href="/programmes/">Programmes</a>
+        </nav>
+
+        <main class="site-main">
+            {% block main_content %}
+            <h2>Welcome to my TV Programmes website</h2>
+            <p>This website is about some of my favourite character-driven and dramatic TV programmes.</p>
+            <p>Use the menu above to browse the programme list and view each show in more detail.</p>
+            {% endblock %}
+        </main>
+
+        <footer class="site-footer">
+            <p>CSC1025 Project 2 | Alex Merriman</p>
+        </footer>
+
+    </div>
+
 </body>
 </html>
