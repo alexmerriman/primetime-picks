@@ -123,3 +123,26 @@ th {
     margin-top: 10px;
     font-size: 1rem;
 }
+
+.info-card,
+.description-card {
+    background-color: #fafafa;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.description-card h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.back-link a {
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.back-link a:hover {
+    text-decoration: underline;
+}
