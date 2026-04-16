@@ -7,25 +7,24 @@ TV Programmes
 {% block main_content %}
 <h1>My Favourite TV Programmes</h1>
 
-<form method="get">
-    <input type="text" name="q" placeholder="Search programmes..." value="{{ query|default:'' }}">
+<div class="list-toolbar">
+    <form method="get" class="filter-form">
+        <input type="text" name="q" placeholder="Search programmes..." value="{{ query|default:'' }}">
 
-    <select name="genre">
-        <option value="">All Genres</option>
-        {% for genre in genres %}
-            <option value="{{ genre.id }}" {% if selected_genre == genre.id|stringformat:"s" %}selected{% endif %}>
-                {{ genre.name }}
-            </option>
-        {% endfor %}
-    </select>
+        <select name="genre">
+            <option value="">All Genres</option>
+            {% for genre in genres %}
+                <option value="{{ genre.id }}" {% if selected_genre == genre.id|stringformat:"s" %}selected{% endif %}>
+                    {{ genre.name }}
+                </option>
+            {% endfor %}
+        </select>
 
-    <button type="submit">Filter</button>
-</form>
+        <button type="submit">Filter</button>
+    </form>
 
-<!-- ADD NEW BUTTON -->
-<p>
-    <a href="{% url 'programme_create' %}">➕ Add New Programme</a>
-</p>
+    <a href="{% url 'programme_create' %}" class="add-button">+ Add New Programme</a>
+</div>
 
 {% if programmes %}
 <table>
@@ -35,7 +34,7 @@ TV Programmes
         <th>Genre</th>
         <th>Release Year</th>
         <th>Description</th>
-        <th>Actions</th> <!-- NEW COLUMN -->
+        <th>Actions</th>
     </tr>
 
     {% for programme in programmes %}
@@ -56,7 +55,6 @@ TV Programmes
         <td>{{ programme.release_year }}</td>
         <td>{{ programme.description }}</td>
 
-        <!-- ACTION BUTTONS -->
         <td>
             <a href="{% url 'programme_update' programme.id %}">Edit</a> |
             <a href="{% url 'programme_delete' programme.id %}">Delete</a>
@@ -68,5 +66,4 @@ TV Programmes
 {% else %}
 <p>No programmes have been added yet.</p>
 {% endif %}
-
 {% endblock %}
