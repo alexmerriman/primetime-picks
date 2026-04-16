@@ -7,6 +7,11 @@ TV Programmes
 {% block main_content %}
 <h1>My Favourite TV Programmes</h1>
 
+<form method="get">
+    <input type="text" name="q" placeholder="Search programmes..." value="{{ query }}">
+    <button type="submit">Search</button>
+</form>
+
 <!-- ADD NEW BUTTON -->
 <p>
     <a href="{% url 'programme_create' %}">➕ Add New Programme</a>

@@ -12,9 +12,16 @@ def index(request):
     return render(request, 'pages/home.html', context)
 
 def programme_list(request):
-    programmes = Programme.objects.all()
+    query = request.GET.get('q')
+    
+    if query:
+        programmes = Programme.objects.filter(title__icontains=query)
+    else:
+        programmes = Programme.objects.all()
+
     context = {
-        'programmes': programmes
+        'programmes': programmes,
+        'query': query
     }
     return render(request, 'pages/programme_list.html', context)
 
