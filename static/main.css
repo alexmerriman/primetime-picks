@@ -1,36 +1,41 @@
 body {
-    background-color: #f5f5f5;
+    background: linear-gradient(135deg, #f4f6f8, #e9edf2);
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    color: #222;
 }
 
 .wrapper {
     width: 85%;
-    max-width: 1100px;
+    max-width: 1150px;
     margin: 30px auto;
-    background-color: white;
-    padding: 25px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
+    background-color: #ffffff;
+    padding: 30px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    border-radius: 12px;
 }
 
 .site-header {
     text-align: center;
     padding-bottom: 20px;
-    border-bottom: 2px solid #ddd;
+    border-bottom: 2px solid #e3e3e3;
 }
 
 .site-header h1 {
     margin-bottom: 8px;
+    font-size: 3rem;
+    letter-spacing: 0.5px;
 }
 
 .site-header p {
     margin-top: 0;
     color: #666;
+    font-size: 1.2rem;
 }
 
 .site-nav {
-    margin: 20px 0;
+    margin: 25px 0;
     text-align: center;
 }
 
@@ -38,99 +43,132 @@ body {
     text-decoration: none;
     color: #222;
     font-weight: bold;
-    margin: 0 15px;
+    margin: 0 18px;
+    font-size: 1.1rem;
+    position: relative;
+    transition: color 0.2s ease;
 }
 
 .site-nav a:hover {
-    text-decoration: underline;
+    color: #7c3aed;
+}
+
+.site-nav a::after {
+    content: "";
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #7c3aed;
+    transition: width 0.25s ease;
+    margin: 4px auto 0;
+}
+
+.site-nav a:hover::after {
+    width: 100%;
 }
 
 .site-main {
-    margin-top: 20px;
+    margin-top: 25px;
+}
+
+.site-main h1,
+.site-main h2 {
+    font-size: 2.1rem;
+    margin-bottom: 20px;
+}
+
+.site-main h3 {
+    font-size: 1.4rem;
+    margin-bottom: 12px;
+}
+
+.site-main p {
+    line-height: 1.6;
+    font-size: 1.05rem;
 }
 
 .site-footer {
-    margin-top: 30px;
-    padding-top: 15px;
+    margin-top: 35px;
+    padding-top: 18px;
     border-top: 1px solid #ddd;
     text-align: center;
     color: #666;
-    font-size: 0.9em;
+    font-size: 0.95em;
 }
 
-.detail-container {
-    display: flex;
-    gap: 30px;
-    align-items: flex-start;
-    margin-top: 20px;
-}
-
-.detail-image img {
-    width: 180px;
-    height: auto;
-    border-radius: 6px;
-}
-
-.detail-info {
-    max-width: 600px;
-}
-
-.table-image {
-    width: 70px;
-    height: auto;
-}
-
-table {
-    border-collapse: collapse;
-    width: 100%;
-    margin-top: 15px;
-}
-
-th, td {
-    border: 1px solid #ccc;
-    padding: 10px;
-    text-align: left;
-    vertical-align: top;
-}
-
-th {
-    background-color: #f0f0f0;
-}
-
+/* Homepage cards */
 .featured-grid {
     display: flex;
     justify-content: center;
-    gap: 25px;
+    gap: 28px;
     flex-wrap: wrap;
-    margin-top: 20px;
+    margin-top: 25px;
 }
 
 .programme-card {
-    width: 220px;
+    width: 240px;
     text-align: center;
+    background: #fafafa;
+    border: 1px solid #e3e3e3;
+    border-radius: 12px;
+    padding: 14px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.programme-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+}
+
+.programme-card a {
+    text-decoration: none;
+    color: #4c1d95;
+    font-weight: bold;
+}
+
+.programme-card a:hover {
+    text-decoration: underline;
 }
 
 .programme-card img {
     width: 100%;
-    height: 320px;
+    height: 340px;
     object-fit: cover;
-    border-radius: 6px;
+    border-radius: 8px;
     display: block;
-    margin: 0 auto;
+    margin: 0 auto 12px;
 }
 
-.programme-card h3 {
-    margin-top: 10px;
-    font-size: 1rem;
+/* Detail page */
+.detail-container {
+    display: flex;
+    gap: 35px;
+    align-items: flex-start;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.detail-image img {
+    width: 220px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.detail-info {
+    max-width: 650px;
+    flex: 1;
 }
 
 .info-card,
 .description-card {
     background-color: #fafafa;
     border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 15px;
-    margin-bottom: 15px;
+    border-radius: 10px;
+    padding: 18px;
+    margin-bottom: 18px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 .description-card h3 {
@@ -141,21 +179,117 @@ th {
 .back-link a {
     font-weight: bold;
     text-decoration: none;
+    color: #4c1d95;
 }
 
 .back-link a:hover {
     text-decoration: underline;
 }
 
+/* Forms */
 form {
-    margin-bottom: 20px;
-    text-align: center;
+    margin-bottom: 22px;
 }
 
 form input,
 form select,
+form textarea,
 form button {
-    padding: 8px;
-    margin: 5px;
-    font-size: 1em;
+    padding: 10px;
+    margin: 6px 0;
+    font-size: 1rem;
+    border: 1px solid #cfcfcf;
+    border-radius: 8px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+form textarea {
+    min-height: 140px;
+    resize: vertical;
+}
+
+form button {
+    background-color: #7c3aed;
+    color: white;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    width: auto;
+    padding: 10px 18px;
+    transition: background-color 0.2s ease;
+}
+
+form button:hover {
+    background-color: #5b21b6;
+}
+
+/* Table */
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 18px;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+th,
+td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+    vertical-align: top;
+}
+
+th {
+    background-color: #f3f0ff;
+    color: #222;
+    font-size: 1rem;
+}
+
+tr:nth-child(even) {
+    background-color: #fafafa;
+}
+
+tr:hover {
+    background-color: #f5f3ff;
+}
+
+.table-image {
+    width: 85px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 6px;
+    display: block;
+}
+
+/* General links */
+a {
+    color: #4c1d95;
+}
+
+a:hover {
+    color: #6d28d9;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .wrapper {
+        width: 92%;
+        padding: 20px;
+    }
+
+    .detail-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .detail-info {
+        max-width: 100%;
+    }
+
+    .site-header h1 {
+        font-size: 2.4rem;
+    }
 }
