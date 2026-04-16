@@ -146,3 +146,16 @@ th {
 .back-link a:hover {
     text-decoration: underline;
 }
+
+form {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+form input,
+form select,
+form button {
+    padding: 8px;
+    margin: 5px;
+    font-size: 1em;
+}

@@ -8,8 +8,18 @@ TV Programmes
 <h1>My Favourite TV Programmes</h1>
 
 <form method="get">
-    <input type="text" name="q" placeholder="Search programmes..." value="{{ query }}">
-    <button type="submit">Search</button>
+    <input type="text" name="q" placeholder="Search programmes..." value="{{ query|default:'' }}">
+
+    <select name="genre">
+        <option value="">All Genres</option>
+        {% for genre in genres %}
+            <option value="{{ genre.id }}" {% if selected_genre == genre.id|stringformat:"s" %}selected{% endif %}>
+                {{ genre.name }}
+            </option>
+        {% endfor %}
+    </select>
+
+    <button type="submit">Filter</button>
 </form>
 
 <!-- ADD NEW BUTTON -->

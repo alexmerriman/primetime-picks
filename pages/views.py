@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Programme
+from .models import Programme, Genre
 from .forms import ReviewForm
 
 def index(request):
@@ -13,15 +13,22 @@ def index(request):
 
 def programme_list(request):
     query = request.GET.get('q')
-    
+    genre_id = request.GET.get('genre')
+
+    programmes = Programme.objects.all()
+    genres = Genre.objects.all()
+
     if query:
-        programmes = Programme.objects.filter(title__icontains=query)
-    else:
-        programmes = Programme.objects.all()
+        programmes = programmes.filter(title__icontains=query)
+
+    if genre_id:
+        programmes = programmes.filter(genre_id=genre_id)
 
     context = {
         'programmes': programmes,
-        'query': query
+        'query': query,
+        'genres': genres,
+        'selected_genre': genre_id
     }
     return render(request, 'pages/programme_list.html', context)
 
