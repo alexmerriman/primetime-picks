@@ -5,13 +5,17 @@ Programme Form
 {% endblock %}
 
 {% block main_content %}
-<h2>Programme Form</h2>
+<div class="form-card">
+    <h1>Programme Form</h1>
 
-<form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Save</button>
-</form>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save Programme</button>
+    </form>
 
-<p><a href="{% url 'programme_list' %}">Back to programmes</a></p>
+    <p class="back-link">
+        <a href="{% url 'programme_list' %}">← Back to programmes</a>
+    </p>
+</div>
 {% endblock %}

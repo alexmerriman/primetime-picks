@@ -5,14 +5,18 @@ Delete Programme
 {% endblock %}
 
 {% block main_content %}
-<h2>Delete Programme</h2>
+<div class="form-card">
+    <h1>Delete Programme</h1>
 
-<p>Are you sure you want to delete "{{ programme.title }}"?</p>
+    <p>Are you sure you want to delete <strong>{{ programme.title }}</strong>?</p>
 
-<form method="post">
-    {% csrf_token %}
-    <button type="submit">Confirm Delete</button>
-</form>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="delete-button">Confirm Delete</button>
+    </form>
 
-<p><a href="{% url 'programme_list' %}">Cancel</a></p>
+    <p class="back-link">
+        <a href="{% url 'programme_list' %}">← Cancel and go back</a>
+    </p>
+</div>
 {% endblock %}
