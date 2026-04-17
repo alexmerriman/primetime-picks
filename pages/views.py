@@ -1,9 +1,11 @@
 from django.shortcuts import render, get_object_or_404
+from django.db.models import Avg
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Programme, Genre
+
+from .models import Programme
 from .forms import ReviewForm
-from django.db.models import Avg
+
 
 def index(request):
     featured_programmes = Programme.objects.all()[:3]
@@ -12,11 +14,15 @@ def index(request):
     }
     return render(request, 'pages/home.html', context)
 
+
 def programme_list(request):
     query = request.GET.get('q')
     genre_id = request.GET.get('genre')
 
     programmes = Programme.objects.all()
+
+    # only import Genre here if you already have it in models
+    from .models import Genre
     genres = Genre.objects.all()
 
     if query:
@@ -33,16 +39,18 @@ def programme_list(request):
     }
     return render(request, 'pages/programme_list.html', context)
 
+
 def programme_detail(request, programme_id):
     programme = get_object_or_404(Programme, id=programme_id)
     reviews = programme.review_set.all()
     average_rating = reviews.aggregate(Avg('rating'))['rating__avg']
 
-    if request.method == 'POST':
+    if request.method == 'POST' and request.user.is_authenticated:
         form = ReviewForm(request.POST)
         if form.is_valid():
             review = form.save(commit=False)
             review.programme = programme
+            review.reviewer_name = request.user.username
             review.save()
             form = ReviewForm()
     else:
@@ -57,17 +65,20 @@ def programme_detail(request, programme_id):
 
     return render(request, 'pages/programme_detail.html', context)
 
+
 class ProgrammeCreate(CreateView):
     model = Programme
     template_name = 'pages/programme_form.html'
     fields = ['title', 'genre', 'release_year', 'description', 'image']
     success_url = reverse_lazy('programme_list')
 
+
 class ProgrammeUpdate(UpdateView):
     model = Programme
     template_name = 'pages/programme_form.html'
     fields = ['title', 'genre', 'release_year', 'description', 'image']
     success_url = reverse_lazy('programme_list')
+
 
 class ProgrammeDelete(DeleteView):
     model = Programme

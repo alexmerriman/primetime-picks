@@ -58,11 +58,20 @@
             <div class="description-card">
                 <h3>Add a Review</h3>
 
-                <form method="post">
-                    {% csrf_token %}
-                    {{ form.as_p }}
-                    <button type="submit">Submit Review</button>
-                </form>
+                {% if user.is_authenticated %}
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button type="submit">Submit Review</button>
+                    </form>
+                {% else %}
+                    <p class="empty-message">
+                        You must be logged in to add a review.
+                    </p>
+                    <p>
+                        <a href="{% url 'login' %}">Login here</a>
+                    </p>
+                {% endif %}
             </div>
         </div>
 
