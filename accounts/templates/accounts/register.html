@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}
+Register
+{% endblock %}
+
+{% block main_content %}
+<div class="form-card">
+    <h1>Register</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Create Account</button>
+    </form>
+
+    <p class="back-link">
+        <a href="{% url 'index' %}">← Back to home</a>
+    </p>
+</div>
+{% endblock %}
