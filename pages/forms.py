@@ -5,3 +5,10 @@ class ReviewForm(forms.ModelForm):
     class Meta:
         model = Review
         fields = ['rating', 'comment']
+        widgets = {
+            'rating': forms.NumberInput(attrs={
+                'min': 1,
+                'max': 10,
+                'placeholder': 'Rate 1-10'
+            }),
+        }

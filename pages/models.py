@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.validators import MinValueValidator, MaxValueValidator
 
 class Genre(models.Model):
     name = models.CharField(max_length=100)
@@ -19,7 +20,9 @@ class Programme(models.Model):
 class Review(models.Model):
     programme = models.ForeignKey(Programme, on_delete=models.CASCADE)
     reviewer_name = models.CharField(max_length=100)
-    rating = models.IntegerField()
+    rating = models.IntegerField(
+        validators=[MinValueValidator(1), MaxValueValidator(10)]
+    )
     comment = models.TextField()
 
     def __str__(self):
