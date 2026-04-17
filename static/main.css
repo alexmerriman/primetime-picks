@@ -34,6 +34,7 @@ body {
     font-size: 1.2rem;
 }
 
+/* LEAVE THIS NAV SECTION AS IS */
 .site-nav {
     margin: 25px 0;
     text-align: center;
@@ -113,22 +114,23 @@ body {
     border-radius: 12px;
     padding: 14px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .programme-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+    transform: translateY(-8px);
+    box-shadow: 0 12px 26px rgba(0, 0, 0, 0.14);
 }
 
 .programme-card a {
     text-decoration: none;
     color: #4c1d95;
     font-weight: bold;
+    transition: color 0.2s ease;
 }
 
 .programme-card a:hover {
-    text-decoration: underline;
+    color: #6d28d9;
 }
 
 .programme-card img {
@@ -138,12 +140,17 @@ body {
     border-radius: 8px;
     display: block;
     margin: 0 auto 12px;
+    transition: transform 0.25s ease;
+}
+
+.programme-card:hover img {
+    transform: scale(1.03);
 }
 
 /* Detail page */
 .detail-container {
     display: flex;
-    gap: 35px;
+    gap: 40px;
     align-items: flex-start;
     margin-top: 20px;
     flex-wrap: wrap;
@@ -157,7 +164,7 @@ body {
 }
 
 .detail-info {
-    max-width: 650px;
+    max-width: 500px;
     flex: 1;
 }
 
@@ -176,6 +183,17 @@ body {
     margin-bottom: 10px;
 }
 
+.rating-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #6c63ff, #8b7bff);
+    color: white;
+    font-weight: bold;
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-size: 0.95em;
+    margin-bottom: 10px;
+}
+
 .back-link a {
     font-weight: bold;
     text-decoration: none;
@@ -184,6 +202,26 @@ body {
 
 .back-link a:hover {
     text-decoration: underline;
+}
+
+/* Reviews */
+.review-item {
+    margin-bottom: 15px;
+}
+
+.review-item strong {
+    color: #333;
+}
+
+.review-divider {
+    border: none;
+    border-top: 1px solid #eee;
+    margin: 10px 0;
+}
+
+.empty-message {
+    color: #777;
+    font-style: italic;
 }
 
 /* Forms */
@@ -224,7 +262,76 @@ form button:hover {
     background-color: #5b21b6;
 }
 
-/* Table */
+/* Programme list toolbar */
+.list-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.filter-form {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 0;
+}
+
+.filter-form input,
+.filter-form select {
+    width: auto;
+    min-width: 220px;
+    margin: 0;
+}
+
+.filter-form button {
+    width: auto;
+    margin: 0;
+}
+
+.add-button {
+    display: inline-block;
+    background-color: #7c3aed;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px 16px;
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+}
+
+.add-button:hover {
+    background-color: #5b21b6;
+    color: white;
+}
+
+/* Form pages */
+.form-card {
+    max-width: 700px;
+    margin: 0 auto;
+    background: #fafafa;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.form-card h1 {
+    margin-top: 0;
+}
+
+.delete-button {
+    background-color: #dc2626;
+}
+
+.delete-button:hover {
+    background-color: #b91c1c;
+}
+
+/* Tables */
 table {
     border-collapse: collapse;
     width: 100%;
@@ -292,148 +399,20 @@ a:hover {
     .site-header h1 {
         font-size: 2.4rem;
     }
-}
 
-.list-toolbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    margin-bottom: 20px;
-}
+    .list-toolbar {
+        flex-direction: column;
+        align-items: stretch;
+    }
 
-.filter-form {
-    display: flex;
-    gap: 12px;
-    align-items: center;
-    flex-wrap: wrap;
-    margin: 0;
-}
+    .filter-form {
+        justify-content: center;
+    }
 
-.filter-form input,
-.filter-form select {
-    width: auto;
-    min-width: 220px;
-    margin: 0;
-}
-
-.filter-form button {
-    width: auto;
-    margin: 0;
-}
-
-.add-button {
-    display: inline-block;
-    background-color: #7c3aed;
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    padding: 10px 16px;
-    border-radius: 8px;
-    transition: background-color 0.2s ease;
-}
-
-.add-button:hover {
-    background-color: #5b21b6;
-    color: white;
-}
-
-.form-card {
-    max-width: 700px;
-    margin: 0 auto;
-    background: #fafafa;
-    border: 1px solid #ddd;
-    border-radius: 12px;
-    padding: 25px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-}
-
-.form-card h1 {
-    margin-top: 0;
-}
-
-.delete-button {
-    background-color: #dc2626;
-}
-
-.delete-button:hover {
-    background-color: #b91c1c;
-}
-
-.programme-card {
-    width: 240px;
-    text-align: center;
-    background: #fafafa;
-    border: 1px solid #e3e3e3;
-    border-radius: 12px;
-    padding: 14px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.programme-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 26px rgba(0, 0, 0, 0.14);
-}
-
-.programme-card img {
-    width: 100%;
-    height: 340px;
-    object-fit: cover;
-    border-radius: 8px;
-    display: block;
-    margin: 0 auto 12px;
-    transition: transform 0.25s ease;
-}
-
-.programme-card:hover img {
-    transform: scale(1.03);
-}
-
-.programme-card a {
-    text-decoration: none;
-    color: #4c1d95;
-    font-weight: bold;
-    transition: color 0.2s ease;
-}
-
-.programme-card a:hover {
-    color: #6d28d9;
-}
-
-.rating-badge {
-    display: inline-block;
-    background: linear-gradient(135deg, #6c63ff, #8b7bff);
-    color: white;
-    font-weight: bold;
-    padding: 8px 14px;
-    border-radius: 20px;
-    font-size: 0.95em;
-    margin-bottom: 10px;
-}
-
-.detail-bottom-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-}
-
-.review-item {
-    margin-bottom: 15px;
-}
-
-.review-item strong {
-    color: #333;
-}
-
-.review-divider {
-    border: none;
-    border-top: 1px solid #eee;
-    margin: 10px 0;
-}
-
-.empty-message {
-    color: #777;
-    font-style: italic;
+    .filter-form input,
+    .filter-form select,
+    .filter-form button,
+    .add-button {
+        width: 100%;
+    }
 }
