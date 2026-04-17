@@ -3,6 +3,7 @@ from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Programme, Genre
 from .forms import ReviewForm
+from django.db.models import Avg
 
 def index(request):
     featured_programmes = Programme.objects.all()[:3]
@@ -35,6 +36,7 @@ def programme_list(request):
 def programme_detail(request, programme_id):
     programme = get_object_or_404(Programme, id=programme_id)
     reviews = programme.review_set.all()
+    average_rating = reviews.aggregate(Avg('rating'))['rating__avg']
 
     if request.method == 'POST':
         form = ReviewForm(request.POST)
@@ -49,8 +51,10 @@ def programme_detail(request, programme_id):
     context = {
         'programme': programme,
         'reviews': reviews,
-        'form': form
+        'form': form,
+        'average_rating': average_rating
     }
+
     return render(request, 'pages/programme_detail.html', context)
 
 class ProgrammeCreate(CreateView):
