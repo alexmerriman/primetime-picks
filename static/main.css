@@ -164,8 +164,15 @@ body {
 }
 
 .detail-info {
-    max-width: 500px;
+    max-width: 620px;
     flex: 1;
+}
+
+.detail-bottom-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    align-items: start;
 }
 
 .info-card,
@@ -243,7 +250,7 @@ form button {
 }
 
 form textarea {
-    min-height: 140px;
+    min-height: 110px;
     resize: vertical;
 }
 
@@ -255,11 +262,18 @@ form button {
     cursor: pointer;
     width: auto;
     padding: 10px 18px;
-    transition: background-color 0.2s ease;
+    transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+form label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 4px;
 }
 
 form button:hover {
     background-color: #5b21b6;
+    transform: translateY(-1px);
 }
 
 /* Programme list toolbar */
@@ -300,12 +314,13 @@ form button:hover {
     font-weight: bold;
     padding: 10px 16px;
     border-radius: 8px;
-    transition: background-color 0.2s ease;
+    transition: background-color 0.2s ease, tranform 0,15s ease;
 }
 
 .add-button:hover {
     background-color: #5b21b6;
     color: white;
+    transform: translateY(-1px);
 }
 
 /* Form pages */
@@ -415,4 +430,8 @@ a:hover {
     .add-button {
         width: 100%;
     }
+}
+
+h1, h2, h3 {
+    color: #222;
 }
