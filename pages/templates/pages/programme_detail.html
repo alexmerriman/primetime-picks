@@ -15,47 +15,55 @@
         {% endif %}
     </div>
 
-    <div class="info-card">
-        <p>
-            <strong>Average Rating:</strong>
+    <div class="detail-info">
+        <div class="info-card">
             {% if average_rating %}
-                {{ average_rating|floatformat:1 }}/10
+                <div class="rating-badge">
+                    ⭐ {{ average_rating|floatformat:1 }}/10
+                </div>
             {% else %}
-                No ratings yet
+                <div class="rating-badge">
+                    No ratings yet
+                </div>
             {% endif %}
-        </p>
 
-        <p><strong>Genre:</strong> {{ programme.genre }}</p>
-        <p><strong>Release Year:</strong> {{ programme.release_year }}</p>
-    </div>
+            <p><strong>Genre:</strong> {{ programme.genre }}</p>
+            <p><strong>Release Year:</strong> {{ programme.release_year }}</p>
+        </div>
 
         <div class="description-card">
             <h3>About this programme</h3>
             <p>{{ programme.description }}</p>
         </div>
 
-        <div class="description-card">
-            <h3>Reviews</h3>
+        <div class="detail-bottom-grid">
+            <div class="description-card">
+                <h3>Reviews</h3>
 
-            {% if reviews %}
-                {% for review in reviews %}
-                    <p><strong>{{ review.reviewer_name }}</strong> rated it {{ review.rating }}/10</p>
-                    <p>{{ review.comment }}</p>
-                    <hr>
-                {% endfor %}
-            {% else %}
-                <p>No reviews yet.</p>
-            {% endif %}
-        </div>
+                {% if reviews %}
+                    {% for review in reviews %}
+                        <div class="review-item">
+                            <p><strong>{{ review.reviewer_name }}</strong> rated it {{ review.rating }}/10</p>
+                            <p>{{ review.comment }}</p>
+                            {% if not forloop.last %}
+                                <hr class="review-divider">
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p class="empty-message">No reviews yet. Be the first to add one!</p>
+                {% endif %}
+            </div>
 
-        <div class="description-card">
-            <h3>Add a Review</h3>
+            <div class="description-card">
+                <h3>Add a Review</h3>
 
-            <form method="post">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <button type="submit">Submit Review</button>
-            </form>
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit">Submit Review</button>
+                </form>
+            </div>
         </div>
 
         <p class="back-link">
